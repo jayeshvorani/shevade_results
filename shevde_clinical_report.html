@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clinical Report — Mr. Ranjan Shevde | 3–7 June 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',sans-serif;background:#EEF2F7;color:#0F172A;padding-bottom:36px}
 
-/* ── Header ─────────────────────────────────────────────────────────────── */
 .hdr{background:linear-gradient(135deg,#0B2545 0%,#1A3A60 100%);padding:20px 28px 18px;color:#fff}
 .hdr-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px}
 .hdr-eyebrow{font-size:10px;font-weight:600;letter-spacing:.18em;color:#93C5FD;margin-bottom:5px;text-transform:uppercase}
@@ -22,16 +22,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',sa
 .tags{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap;margin-top:8px}
 .tag{background:rgba(255,255,255,.13);padding:2px 9px;border-radius:12px;font-size:10px;font-weight:500}
 
-/* ── Banner ─────────────────────────────────────────────────────────────── */
+.good-banner{background:#F0FDF4;border-bottom:2px solid #86EFAC;padding:10px 28px;font-size:12px;color:#166534;display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-weight:500}
 .banner{background:#FEF3C7;border-bottom:1px solid #FDE68A;padding:8px 28px;font-size:11px;color:#92400E;display:flex;gap:10px;flex-wrap:wrap}
 
-/* ── Good news banner ───────────────────────────────────────────────────── */
-.good-banner{background:#F0FDF4;border-bottom:2px solid #86EFAC;padding:10px 28px;font-size:12px;color:#166534;display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-weight:500}
-
-/* ── Content ────────────────────────────────────────────────────────────── */
 .content{padding:18px 24px 0}
 
-/* ── Summary cards ──────────────────────────────────────────────────────── */
 .sm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px;margin-bottom:16px}
 .sm-card{border-radius:10px;padding:12px 14px}
 .sm-top{display:flex;justify-content:space-between;margin-bottom:5px}
@@ -47,27 +42,23 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',sa
 .sw{background:#FFFBEB;border:1px solid #FDE68A}.sw .sm-lbl,.sw .sm-chg{color:#92400E}.sw .sm-dot{background:#F59E0B}
 .sn{background:#F0FDF4;border:1px solid #BBF7D0}.sn .sm-lbl,.sn .sm-chg{color:#166534}.sn .sm-dot{background:#22C55E}
 
-/* ── Charts grid ────────────────────────────────────────────────────────── */
 .ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin-bottom:14px}
 .ch-card{background:#fff;border-radius:12px;border:1px solid #E2E8F0;box-shadow:0 1px 4px rgba(0,0,0,.07);overflow:hidden}
 .ch-hdr{padding:11px 16px 9px;border-bottom:1px solid #F1F5F9;display:flex;align-items:center;justify-content:space-between;gap:8px}
 .ch-cat{font-size:9px;font-weight:700;letter-spacing:.12em;color:#94A3B8;text-transform:uppercase;margin-bottom:1px}
 .ch-title{font-size:13px;font-weight:600;color:#0F172A}
-.ch-body{padding:12px 10px 4px}
-.ch-wrap{position:relative;height:180px}
+.ch-body{padding:16px 10px 4px}
+.ch-wrap{position:relative;height:195px}
 .ch-note{padding:2px 16px 10px;font-size:10px;color:#94A3B8;font-style:italic}
 
-/* badge */
 .bdg{font-size:9px;font-weight:700;letter-spacing:.10em;padding:2px 8px;border-radius:20px;text-transform:uppercase;color:#fff;white-space:nowrap;flex-shrink:0}
 .bdg-i{background:#2563EB}.bdg-c{background:#DC2626}.bdg-w{background:#D97706}.bdg-n{background:#16A34A}
 
-/* ── Section card ───────────────────────────────────────────────────────── */
 .sec{background:#fff;border-radius:12px;border:1px solid #E2E8F0;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:14px}
 .sec-hdr{padding:11px 16px 9px;border-bottom:1px solid #F1F5F9;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .sec-lbl{font-size:9px;font-weight:700;letter-spacing:.12em;color:#94A3B8;text-transform:uppercase}
 .sec-title{font-size:13px;font-weight:600;color:#0F172A}
 
-/* ── Table ──────────────────────────────────────────────────────────────── */
 table{width:100%;border-collapse:collapse}
 thead tr{background:#F8FAFC}
 th{padding:7px 14px;text-align:left;font-size:10px;font-weight:600;color:#64748B;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #E2E8F0}
@@ -78,13 +69,11 @@ td{padding:9px 14px;font-size:12px}
 tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
 .col-today{background:#F0FDF4}
 
-/* ── Timeline ───────────────────────────────────────────────────────────── */
 .tl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px;padding:14px}
 .tl-item{border-radius:8px;padding:11px 13px}
 .tl-date{font-size:12px;font-weight:700;margin-bottom:7px}
 .tl-ev{font-size:11px;color:#475569;margin-bottom:4px;padding-left:9px}
 
-/* ── Micro ──────────────────────────────────────────────────────────────── */
 .mc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:10px;padding:12px 14px}
 .mc-item{border-radius:8px;padding:10px 12px}
 .mc-site{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
@@ -93,11 +82,9 @@ tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
 .mc-r{font-size:10px;color:#991B1B;margin-bottom:4px}
 .mc-note{font-size:10px;color:#64748B;font-style:italic}
 
-/* ── Footer ─────────────────────────────────────────────────────────────── */
 .footer{padding:14px 24px 0;text-align:center;font-size:10px;color:#94A3B8;line-height:1.7}
 .footer .warn{color:#DC2626;font-weight:600}
 
-/* ── PRINT ──────────────────────────────────────────────────────────────── */
 @media print{
   @page{size:A4;margin:10mm 12mm}
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
@@ -112,7 +99,6 @@ tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
 </head>
 <body>
 
-<!-- Header -->
 <div class="hdr">
   <div class="hdr-inner">
     <div>
@@ -138,17 +124,15 @@ tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
   </div>
 </div>
 
-<!-- Good news banner -->
 <div class="good-banner">
   <span>✅ <strong>7 Jun Update:</strong></span>
   <span>PCT now NORMAL at 0.22 — sepsis resolving</span><span>·</span>
-  <span>Creatinine improving for 3rd consecutive day (2.40)</span><span>·</span>
+  <span>Creatinine improving 3rd consecutive day (2.40)</span><span>·</span>
   <span>Haemoglobin 9.0 — transfusion holding</span><span>·</span>
   <span>Platelets recovering (138)</span><span>·</span>
-  <span style="color:#D97706">⚠ Sodium 146.5 — needs correction</span>
+  <span style="color:#D97706">⚠ Sodium 146.5 — needs IV fluid correction</span>
 </div>
 
-<!-- Diagnosis Banner -->
 <div class="banner">
   <span>⚠️ <strong>Active Diagnoses:</strong></span>
   <span>Post-CABG Sepsis (Thigh Graft Site)</span><span>·</span>
@@ -159,7 +143,6 @@ tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
 
 <div class="content">
 
-  <!-- Summary Cards -->
   <div class="sm-grid">
     <div class="sm-card si">
       <div class="sm-top"><span class="sm-lbl">Creatinine</span><span class="sm-dot"></span></div>
@@ -193,7 +176,6 @@ tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
     </div>
   </div>
 
-  <!-- Charts Grid -->
   <div class="ch-grid">
 
     <div class="ch-card">
@@ -229,13 +211,13 @@ tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
     <div class="ch-card">
       <div class="ch-hdr"><div><div class="ch-cat">Infection Markers</div><div class="ch-title">White Cell Differential</div></div><span class="bdg bdg-w">Watch</span></div>
       <div class="ch-body"><div class="ch-wrap"><canvas id="cDiff"></canvas></div></div>
-      <div class="ch-note">Neutrophils ref: 40–75% (yellow band) · Lymphocytes ref: 20–45%</div>
+      <div class="ch-note">Neutrophils ref: 40–75% · Lymphocytes ref: 20–45%</div>
     </div>
 
     <div class="ch-card">
       <div class="ch-hdr"><div><div class="ch-cat">Electrolytes</div><div class="ch-title">Sodium Trend</div></div><span class="bdg bdg-w">Concern</span></div>
       <div class="ch-body"><div class="ch-wrap"><canvas id="cNa"></canvas></div></div>
-      <div class="ch-note">Ref: 135–145 mmol/l · Rising 5 consecutive days — post-obstructive diuresis · IV fluid adjustment needed</div>
+      <div class="ch-note">Ref: 135–145 mmol/l · Rising for 5 consecutive days — post-obstructive diuresis · IV fluid correction needed</div>
     </div>
 
     <div class="ch-card">
@@ -246,7 +228,6 @@ tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
 
   </div>
 
-  <!-- Electrolytes Table -->
   <div class="sec">
     <div class="sec-hdr">
       <div><div class="sec-lbl">Daily Values · 3–7 Jun</div><div class="sec-title">Electrolytes</div></div>
@@ -255,11 +236,7 @@ tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
     <div style="overflow-x:auto">
       <table>
         <thead>
-          <tr>
-            <th>Electrolyte</th><th>Reference</th>
-            <th>3 Jun</th><th>4 Jun</th><th>5 Jun</th><th>6 Jun</th>
-            <th class="col-today">7 Jun ★</th>
-          </tr>
+          <tr><th>Electrolyte</th><th>Reference</th><th>3 Jun</th><th>4 Jun</th><th>5 Jun</th><th>6 Jun</th><th class="col-today">7 Jun ★</th></tr>
         </thead>
         <tbody>
           <tr>
@@ -271,8 +248,7 @@ tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
           <tr>
             <td class="td-n">Potassium (mmol/l)</td><td class="td-r">3.5–5.0</td>
             <td class="td-ok">4.70</td><td class="td-ok">4.31</td><td class="td-ok">4.00</td>
-            <td class="td-ok">3.87</td>
-            <td class="col-today td-last">3.71</td>
+            <td class="td-ok">3.87</td><td class="col-today td-last">3.71</td>
           </tr>
           <tr>
             <td class="td-n">Chloride (mmol/l)</td><td class="td-r">96–108</td>
@@ -285,7 +261,6 @@ tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
     </div>
   </div>
 
-  <!-- Timeline -->
   <div class="sec">
     <div class="sec-hdr"><div><div class="sec-lbl">Timeline · 3–7 Jun</div><div class="sec-title">Key Clinical Events</div></div></div>
     <div class="tl-grid">
@@ -330,7 +305,6 @@ tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
     </div>
   </div>
 
-  <!-- Microbiology -->
   <div class="sec">
     <div class="sec-hdr"><div><div class="sec-lbl">Cultures Collected 4 Jun · Reported 5–6 Jun</div><div class="sec-title">Microbiology Summary</div></div></div>
     <div class="mc-grid">
@@ -365,14 +339,16 @@ tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
 
 </div>
 
-<!-- Footer -->
 <div class="footer">
   <p>Compiled from Icon Hospital Dept. of Pathology reports · Mahaveernagar Corner, Manpada Road, Dombivli (E) 421 201 · Updated 7 June 2026<br>
   <span class="warn">⚠ For family reference and communication only. All clinical decisions must be made by qualified medical professionals.</span></p>
 </div>
 
 <script>
-// ── Reference area + line plugin ──────────────────────────────────────────
+// ── Plugins ───────────────────────────────────────────────────────────────
+// Unregister the global datalabels so we control it per-chart
+Chart.unregister(ChartDataLabels);
+
 const refPlugin = {
   id: 'ref',
   beforeDraw(chart) {
@@ -390,8 +366,7 @@ const refPlugin = {
       const py = y.getPixelForValue(l.v);
       if (py < A.top || py > A.bottom) return;
       ctx.save();
-      ctx.strokeStyle = l.color; ctx.lineWidth = 1.5;
-      ctx.setLineDash([4, 3]);
+      ctx.strokeStyle = l.color; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
       ctx.beginPath(); ctx.moveTo(A.left, py); ctx.lineTo(A.right, py); ctx.stroke();
       if (l.lbl) {
         ctx.fillStyle = l.color; ctx.font = '9px sans-serif';
@@ -413,201 +388,297 @@ const scaleX = { grid:{color:'#F1F5F9'}, ticks:{color:'#94A3B8',font:{size:10}},
 const scaleY = (min,max,fmt) => ({ min, max, grid:{color:'#F1F5F9'}, ticks:{color:'#94A3B8',font:{size:10},callback:fmt||(v=>v)}, border:{display:false} });
 const tip = { backgroundColor:'#0F172A', titleColor:'#94A3B8', bodyColor:'#fff', padding:10, cornerRadius:8 };
 
-function ds(label, data, color, r=5) {
+// Base label style
+const LBL = {
+  backgroundColor: 'rgba(255,255,255,0.88)',
+  borderRadius: 3,
+  padding: { top: 2, bottom: 2, left: 4, right: 4 },
+  font: { size: 10, weight: '700' },
+  clamp: true,
+};
+
+// Helper: is this the last (today's) data point?
+const isToday = ctx => ctx.dataIndex === ctx.dataset.data.filter(v => v != null).length - 1
+                    || ctx.dataIndex === DATES.length - 1;
+
+function makeDataset(label, data, color, extras = {}) {
   return {
     label, data,
-    borderColor:color, backgroundColor:'transparent', borderWidth:2.5,
-    pointBackgroundColor:color, pointBorderColor:'#fff',
-    pointBorderWidth:2, pointRadius:r, pointHoverRadius:r+2,
-    tension:0.25, spanGaps:false
+    borderColor: color, backgroundColor: 'transparent', borderWidth: 2.5,
+    pointBackgroundColor: data.map((_, i) => i === data.length - 1 ? '#F59E0B' : color),
+    pointBorderColor: '#fff', pointBorderWidth: 2,
+    pointRadius: data.map((_, i) => i === data.length - 1 ? 7 : 5),
+    pointHoverRadius: 8, tension: 0.25, spanGaps: false,
+    ...extras
   };
-}
-
-// Highlight today's point in gold
-function dsToday(label, data, color, r=5) {
-  const d = ds(label, data, color, r);
-  d.pointBackgroundColor = data.map((_, i) => i === data.length-1 ? '#F59E0B' : color);
-  d.pointRadius = data.map((_, i) => i === data.length-1 ? r+2 : r);
-  d.pointBorderColor = data.map((_, i) => i === data.length-1 ? '#fff' : '#fff');
-  return d;
 }
 
 // ── Chart 1 · Creatinine ─────────────────────────────────────────────────
 new Chart('cCreat', {
-  type:'line',
-  data:{ labels:DATES, datasets:[dsToday('Creatinine (mg/dl)',[2.02,2.71,3.14,2.57,2.40],'#DC2626')] },
-  options:{
+  type: 'line',
+  plugins: [ChartDataLabels],
+  data: { labels: DATES, datasets: [makeDataset('Creatinine',[2.02,2.71,3.14,2.57,2.40],'#DC2626')] },
+  options: {
     responsive:true, maintainAspectRatio:false,
     interaction:{intersect:false,mode:'index'},
-    plugins:{
+    plugins: {
       legend:{display:false},
-      tooltip:{...tip, callbacks:{label:c=>` ${c.parsed.y} mg/dl`,afterLabel:()=>' Ref: 0.6–1.3 mg/dl'}},
+      tooltip:{...tip, callbacks:{label:c=>` ${c.parsed.y} mg/dl`, afterLabel:()=>' Ref: 0.6–1.3'}},
       ref:{
         areas:[{y1:0.6,y2:1.3,color:'rgba(22,163,74,0.15)'}],
         lines:[{v:1.3,color:'#16A34A',lbl:'Upper Normal (1.3)'}]
+      },
+      datalabels: {
+        ...LBL,
+        color: ctx => ctx.dataIndex === 2 ? '#DC2626' : (ctx.dataIndex === DATES.length-1 ? '#D97706' : '#475569'),
+        anchor: 'center',
+        align: ctx => ctx.dataIndex === 2 ? 'bottom' : 'top', // peak goes below
+        offset: 5,
+        formatter: v => v.toFixed(2),
       }
     },
-    scales:{x:scaleX,y:scaleY(0,4.0)}
+    scales: { x:scaleX, y:scaleY(0,4.2) }
   }
 });
 
 // ── Chart 2 · WBC ────────────────────────────────────────────────────────
 new Chart('cWBC', {
-  type:'line',
-  data:{ labels:DATES, datasets:[dsToday('WBC (×1k/cumm)',[23.58,30.50,21.77,15.48,19.45],'#7C3AED')] },
-  options:{
+  type: 'line',
+  plugins: [ChartDataLabels],
+  data: { labels: DATES, datasets: [makeDataset('WBC',[23.58,30.50,21.77,15.48,19.45],'#7C3AED')] },
+  options: {
     responsive:true, maintainAspectRatio:false,
     interaction:{intersect:false,mode:'index'},
-    plugins:{
+    plugins: {
       legend:{display:false},
-      tooltip:{...tip, callbacks:{
-        label:c=>` ${(c.parsed.y*1000).toLocaleString()} /cumm`,
-        afterLabel:()=>' Ref: 4,000–11,000 /cumm'
-      }},
+      tooltip:{...tip, callbacks:{label:c=>` ${(c.parsed.y*1000).toLocaleString()} /cumm`,afterLabel:()=>' Ref: 4,000–11,000'}},
       ref:{
         areas:[{y1:4,y2:11,color:'rgba(22,163,74,0.15)'}],
         lines:[{v:11,color:'#16A34A',lbl:'Upper Normal (11k)'}]
+      },
+      datalabels: {
+        ...LBL,
+        color: ctx => ctx.dataIndex === DATES.length-1 ? '#D97706' : '#475569',
+        anchor: 'center',
+        align: ctx => ctx.dataIndex === 1 ? 'bottom' : 'top', // peak (30.5k) goes below
+        offset: 5,
+        formatter: v => v.toFixed(1) + 'k',
       }
     },
-    scales:{x:scaleX,y:scaleY(0,35,v=>v+'k')}
+    scales: { x:scaleX, y:scaleY(0,35,v=>v+'k') }
   }
 });
 
 // ── Chart 3 · PCT ────────────────────────────────────────────────────────
 new Chart('cPCT', {
-  type:'line',
-  data:{
-    labels:DATES,
-    datasets:[{
-      label:'Procalcitonin (ng/ml)',
-      data:[1.13, null, null, null, 0.22],
-      borderColor:'#0891B2', backgroundColor:'transparent', borderWidth:2.5,
-      pointBackgroundColor:['#DC2626','transparent','transparent','transparent','#16A34A'],
-      pointBorderColor:'#fff', pointBorderWidth:2,
-      pointRadius:[6,0,0,0,6], pointHoverRadius:8,
+  type: 'line',
+  plugins: [ChartDataLabels],
+  data: {
+    labels: DATES,
+    datasets: [{
+      label: 'PCT',
+      data: [1.13, null, null, null, 0.22],
+      borderColor: '#0891B2', backgroundColor:'transparent', borderWidth:2.5,
+      pointBackgroundColor: ['#DC2626','transparent','transparent','transparent','#16A34A'],
+      pointBorderColor: '#fff', pointBorderWidth: 2,
+      pointRadius: [7,0,0,0,7], pointHoverRadius:9,
       tension:0.25, spanGaps:false
     }]
   },
-  options:{
+  options: {
     responsive:true, maintainAspectRatio:false,
     interaction:{intersect:false,mode:'index'},
-    plugins:{
+    plugins: {
       legend:{display:false},
-      tooltip:{...tip, callbacks:{
-        label:c=>c.parsed.y!=null?` ${c.parsed.y} ng/ml`:' No data',
-        afterLabel:()=>' Ref: 0–0.5 ng/ml (Normal)'
-      }},
+      tooltip:{...tip, callbacks:{label:c=>c.raw!=null?` ${c.raw} ng/ml`:' No data',afterLabel:()=>' Ref: 0–0.5 (Normal)'}},
       ref:{
         areas:[{y1:0,y2:0.5,color:'rgba(22,163,74,0.18)'}],
         lines:[{v:0.5,color:'#16A34A',lbl:'Upper Normal (0.5)'}]
+      },
+      datalabels: {
+        ...LBL,
+        display: ctx => ctx.raw != null,
+        font: { size: 11, weight: '800' },
+        color: ctx => ctx.dataIndex === 0 ? '#DC2626' : '#16A34A',
+        align: ctx => ctx.dataIndex === 0 ? 'bottom' : 'top',
+        anchor: 'center',
+        offset: 6,
+        formatter: v => v != null ? v.toFixed(2) : '',
       }
     },
-    scales:{x:scaleX,y:scaleY(0,1.5)}
+    scales: { x:scaleX, y:scaleY(0,1.5) }
   }
 });
 
 // ── Chart 4 · Haemoglobin ────────────────────────────────────────────────
 new Chart('cHb', {
-  type:'line',
-  data:{ labels:DATES, datasets:[dsToday('Haemoglobin (g/dl)',[9.9,9.1,7.4,7.0,9.0],'#DC2626')] },
-  options:{
+  type: 'line',
+  plugins: [ChartDataLabels],
+  data: { labels: DATES, datasets: [makeDataset('Hb',[9.9,9.1,7.4,7.0,9.0],'#DC2626')] },
+  options: {
     responsive:true, maintainAspectRatio:false,
     interaction:{intersect:false,mode:'index'},
-    plugins:{
+    plugins: {
       legend:{display:false},
-      tooltip:{...tip, callbacks:{label:c=>` ${c.parsed.y} g/dl`,afterLabel:()=>' Ref: 13–18 g/dl'}},
+      tooltip:{...tip, callbacks:{label:c=>` ${c.parsed.y} g/dl`,afterLabel:()=>' Ref: 13–18'}},
       ref:{
         areas:[{y1:13,y2:18,color:'rgba(22,163,74,0.15)'}],
         lines:[
           {v:13,color:'#16A34A',lbl:'Lower Normal (13)'},
           {v:8,color:'#DC2626',lbl:'Transfusion trigger (8.0)'}
         ]
+      },
+      datalabels: {
+        ...LBL,
+        color: ctx => ctx.dataIndex === DATES.length-1 ? '#D97706' : '#475569',
+        anchor: 'center', align: 'top', offset: 5,
+        formatter: v => v.toFixed(1),
       }
     },
-    scales:{x:scaleX,y:scaleY(0,20)}
+    scales: { x:scaleX, y:scaleY(0,20) }
   }
 });
 
 // ── Chart 5 · Platelets ──────────────────────────────────────────────────
 new Chart('cPlat', {
-  type:'line',
-  data:{ labels:DATES, datasets:[dsToday('Platelets (×10³/cumm)',[209,168,116,112,138],'#D97706')] },
-  options:{
+  type: 'line',
+  plugins: [ChartDataLabels],
+  data: { labels: DATES, datasets: [makeDataset('Platelets',[209,168,116,112,138],'#D97706')] },
+  options: {
     responsive:true, maintainAspectRatio:false,
     interaction:{intersect:false,mode:'index'},
-    plugins:{
+    plugins: {
       legend:{display:false},
-      tooltip:{...tip, callbacks:{label:c=>` ${c.parsed.y} ×10³/cumm`,afterLabel:()=>' Ref: 150–450 ×10³/cumm'}},
+      tooltip:{...tip, callbacks:{label:c=>` ${c.parsed.y} ×10³/cumm`,afterLabel:()=>' Ref: 150–450'}},
       ref:{
         areas:[{y1:150,y2:280,color:'rgba(22,163,74,0.15)'}],
         lines:[{v:150,color:'#D97706',lbl:'Lower Normal (150)'}]
+      },
+      datalabels: {
+        ...LBL,
+        color: ctx => {
+          const v = ctx.raw;
+          if (ctx.dataIndex === DATES.length-1) return '#D97706';
+          return v < 150 ? '#DC2626' : '#475569';
+        },
+        anchor: 'center',
+        align: ctx => ctx.dataIndex === 0 ? 'bottom' : 'top', // 209 near top, go below
+        offset: 5,
+        formatter: v => v,
       }
     },
-    scales:{x:scaleX,y:scaleY(0,280)}
+    scales: { x:scaleX, y:scaleY(0,260) }
   }
 });
 
 // ── Chart 6 · White Cell Differential ───────────────────────────────────
 new Chart('cDiff', {
-  type:'line',
-  data:{
-    labels:DATES,
-    datasets:[
-      {label:'Neutrophils %',data:[87,91,89,84,87],borderColor:'#EF4444',backgroundColor:'transparent',borderWidth:2,
-       pointBackgroundColor:[...Array(4).fill('#EF4444'),'#F59E0B'],pointBorderColor:'#fff',pointBorderWidth:2,
-       pointRadius:[4,4,4,4,6],pointHoverRadius:7,tension:0.25},
-      {label:'Lymphocytes %',data:[9,6,8,11,9],borderColor:'#3B82F6',backgroundColor:'transparent',borderWidth:2,
-       pointBackgroundColor:[...Array(4).fill('#3B82F6'),'#F59E0B'],pointBorderColor:'#fff',pointBorderWidth:2,
-       pointRadius:[4,4,4,4,6],pointHoverRadius:7,tension:0.25}
+  type: 'line',
+  plugins: [ChartDataLabels],
+  data: {
+    labels: DATES,
+    datasets: [
+      {
+        label:'Neutrophils %', data:[87,91,89,84,87],
+        borderColor:'#EF4444', backgroundColor:'transparent', borderWidth:2,
+        pointBackgroundColor:['#EF4444','#EF4444','#EF4444','#EF4444','#F59E0B'],
+        pointBorderColor:'#fff', pointBorderWidth:2,
+        pointRadius:[4,4,4,4,6], pointHoverRadius:7, tension:0.25,
+        datalabels: {
+          ...LBL, color:'#EF4444',
+          anchor:'center', align:'bottom', offset:5,
+          formatter: v => v + '%',
+        }
+      },
+      {
+        label:'Lymphocytes %', data:[9,6,8,11,9],
+        borderColor:'#3B82F6', backgroundColor:'transparent', borderWidth:2,
+        pointBackgroundColor:['#3B82F6','#3B82F6','#3B82F6','#3B82F6','#F59E0B'],
+        pointBorderColor:'#fff', pointBorderWidth:2,
+        pointRadius:[4,4,4,4,6], pointHoverRadius:7, tension:0.25,
+        datalabels: {
+          ...LBL, color:'#3B82F6',
+          anchor:'center', align:'top', offset:5,
+          formatter: v => v + '%',
+        }
+      }
     ]
   },
-  options:{
+  options: {
     responsive:true, maintainAspectRatio:false,
     interaction:{intersect:false,mode:'index'},
-    plugins:{
+    plugins: {
       legend:{display:true,labels:{usePointStyle:true,pointStyle:'circle',font:{size:10},color:'#64748B',padding:12}},
       tooltip:{...tip, callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y}%`}},
       ref:{areas:[{y1:40,y2:75,color:'rgba(250,204,21,0.22)'}]}
     },
-    scales:{x:scaleX,y:scaleY(0,100,v=>v+'%')}
+    scales: { x:scaleX, y:scaleY(0,110, v=>v+'%') }
   }
 });
 
 // ── Chart 7 · Sodium Trend ───────────────────────────────────────────────
 new Chart('cNa', {
-  type:'line',
-  data:{ labels:DATES, datasets:[dsToday('Sodium (mmol/l)',[141.7,141.0,142.0,145.5,146.5],'#F97316')] },
-  options:{
+  type: 'line',
+  plugins: [ChartDataLabels],
+  data: { labels: DATES, datasets: [makeDataset('Sodium',[141.7,141.0,142.0,145.5,146.5],'#F97316')] },
+  options: {
     responsive:true, maintainAspectRatio:false,
     interaction:{intersect:false,mode:'index'},
-    plugins:{
+    plugins: {
       legend:{display:false},
-      tooltip:{...tip, callbacks:{label:c=>` ${c.parsed.y} mmol/l`,afterLabel:()=>' Ref: 135–145 mmol/l'}},
+      tooltip:{...tip, callbacks:{label:c=>` ${c.parsed.y} mmol/l`,afterLabel:()=>' Ref: 135–145'}},
       ref:{
         areas:[{y1:135,y2:145,color:'rgba(22,163,74,0.15)'}],
         lines:[{v:145,color:'#D97706',lbl:'Upper Normal (145)'}]
+      },
+      datalabels: {
+        ...LBL,
+        color: ctx => ctx.raw > 145 ? '#DC2626' : '#475569',
+        anchor: 'center',
+        align: ctx => ctx.raw > 145 ? 'bottom' : 'top',
+        offset: 5,
+        formatter: v => v.toFixed(1),
       }
     },
-    scales:{x:scaleX,y:scaleY(130,150)}
+    scales: { x:scaleX, y:scaleY(130,150) }
   }
 });
 
 // ── Chart 8 · Blood Urea & BUN ───────────────────────────────────────────
 new Chart('cUrea', {
-  type:'line',
-  data:{
-    labels:DATES2,
-    datasets:[
-      {label:'Blood Urea (mg/dl)',data:[61,78],borderColor:'#EA580C',backgroundColor:'transparent',borderWidth:2,
-       pointBackgroundColor:'#EA580C',pointBorderColor:'#fff',pointBorderWidth:2,pointRadius:5,pointHoverRadius:7,tension:0.25},
-      {label:'BUN (mg/dl)',data:[28.49,36.43],borderColor:'#7C3AED',backgroundColor:'transparent',borderWidth:2,
-       pointBackgroundColor:'#7C3AED',pointBorderColor:'#fff',pointBorderWidth:2,pointRadius:5,pointHoverRadius:7,tension:0.25}
+  type: 'line',
+  plugins: [ChartDataLabels],
+  data: {
+    labels: DATES2,
+    datasets: [
+      {
+        label:'Blood Urea (mg/dl)', data:[61,78],
+        borderColor:'#EA580C', backgroundColor:'transparent', borderWidth:2,
+        pointBackgroundColor:'#EA580C', pointBorderColor:'#fff', pointBorderWidth:2,
+        pointRadius:5, pointHoverRadius:7, tension:0.25,
+        datalabels: {
+          ...LBL, color:'#EA580C',
+          anchor:'center', align:'top', offset:5,
+          formatter: v => v,
+        }
+      },
+      {
+        label:'BUN (mg/dl)', data:[28.49,36.43],
+        borderColor:'#7C3AED', backgroundColor:'transparent', borderWidth:2,
+        pointBackgroundColor:'#7C3AED', pointBorderColor:'#fff', pointBorderWidth:2,
+        pointRadius:5, pointHoverRadius:7, tension:0.25,
+        datalabels: {
+          ...LBL, color:'#7C3AED',
+          anchor:'center', align:'bottom', offset:5,
+          formatter: v => v.toFixed(1),
+        }
+      }
     ]
   },
-  options:{
+  options: {
     responsive:true, maintainAspectRatio:false,
     interaction:{intersect:false,mode:'index'},
-    plugins:{
+    plugins: {
       legend:{display:true,labels:{usePointStyle:true,pointStyle:'circle',font:{size:10},color:'#64748B',padding:12}},
       tooltip:{...tip, callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y} mg/dl`}},
       ref:{
@@ -617,7 +688,7 @@ new Chart('cUrea', {
         ]
       }
     },
-    scales:{x:scaleX,y:scaleY(0,100)}
+    scales: { x:scaleX, y:scaleY(0,100) }
   }
 });
 </script>
