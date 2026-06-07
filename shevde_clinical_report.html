@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinical Report — Mr. Ranjan Shevde | 3–7 June 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',sans-serif;background:#EEF2F7;color:#0F172A;padding-bottom:36px}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.hdr{background:linear-gradient(135deg,#0B2545 0%,#1A3A60 100%);padding:20px 28px 18px;color:#fff}
+.hdr-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px}
+.hdr-eyebrow{font-size:10px;font-weight:600;letter-spacing:.18em;color:#93C5FD;margin-bottom:5px;text-transform:uppercase}
+.hdr-name{font-size:22px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.hdr-meta{display:flex;gap:18px;flex-wrap:wrap;font-size:11px}
+.hdr-meta .lbl{color:#7DD3FC}
+.hdr-right{text-align:right}
+.hdr-period-lbl{font-size:10px;color:#7DD3FC;letter-spacing:.08em;text-transform:uppercase}
+.hdr-period{font-size:18px;font-weight:700;margin-top:2px}
+.tags{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap;margin-top:8px}
+.tag{background:rgba(255,255,255,.13);padding:2px 9px;border-radius:12px;font-size:10px;font-weight:500}
+
+/* ── Banner ─────────────────────────────────────────────────────────────── */
+.banner{background:#FEF3C7;border-bottom:1px solid #FDE68A;padding:8px 28px;font-size:11px;color:#92400E;display:flex;gap:10px;flex-wrap:wrap}
+
+/* ── Good news banner ───────────────────────────────────────────────────── */
+.good-banner{background:#F0FDF4;border-bottom:2px solid #86EFAC;padding:10px 28px;font-size:12px;color:#166534;display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-weight:500}
+
+/* ── Content ────────────────────────────────────────────────────────────── */
+.content{padding:18px 24px 0}
+
+/* ── Summary cards ──────────────────────────────────────────────────────── */
+.sm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px;margin-bottom:16px}
+.sm-card{border-radius:10px;padding:12px 14px}
+.sm-top{display:flex;justify-content:space-between;margin-bottom:5px}
+.sm-lbl{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.sm-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:1px}
+.sm-val{font-size:23px;font-weight:700;color:#0F172A;line-height:1}
+.sm-unit{font-size:10px;color:#64748B;margin-top:2px}
+.sm-chg{margin-top:7px;font-size:10px;font-weight:600}
+.sm-ref{font-size:9px;color:#94A3B8;margin-top:2px}
+
+.si{background:#EFF6FF;border:1px solid #BFDBFE}.si .sm-lbl,.si .sm-chg{color:#1D4ED8}.si .sm-dot{background:#3B82F6}
+.sc{background:#FEF2F2;border:1px solid #FECACA}.sc .sm-lbl,.sc .sm-chg{color:#991B1B}.sc .sm-dot{background:#EF4444}
+.sw{background:#FFFBEB;border:1px solid #FDE68A}.sw .sm-lbl,.sw .sm-chg{color:#92400E}.sw .sm-dot{background:#F59E0B}
+.sn{background:#F0FDF4;border:1px solid #BBF7D0}.sn .sm-lbl,.sn .sm-chg{color:#166534}.sn .sm-dot{background:#22C55E}
+
+/* ── Charts grid ────────────────────────────────────────────────────────── */
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin-bottom:14px}
+.ch-card{background:#fff;border-radius:12px;border:1px solid #E2E8F0;box-shadow:0 1px 4px rgba(0,0,0,.07);overflow:hidden}
+.ch-hdr{padding:11px 16px 9px;border-bottom:1px solid #F1F5F9;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.ch-cat{font-size:9px;font-weight:700;letter-spacing:.12em;color:#94A3B8;text-transform:uppercase;margin-bottom:1px}
+.ch-title{font-size:13px;font-weight:600;color:#0F172A}
+.ch-body{padding:12px 10px 4px}
+.ch-wrap{position:relative;height:180px}
+.ch-note{padding:2px 16px 10px;font-size:10px;color:#94A3B8;font-style:italic}
+
+/* badge */
+.bdg{font-size:9px;font-weight:700;letter-spacing:.10em;padding:2px 8px;border-radius:20px;text-transform:uppercase;color:#fff;white-space:nowrap;flex-shrink:0}
+.bdg-i{background:#2563EB}.bdg-c{background:#DC2626}.bdg-w{background:#D97706}.bdg-n{background:#16A34A}
+
+/* ── Section card ───────────────────────────────────────────────────────── */
+.sec{background:#fff;border-radius:12px;border:1px solid #E2E8F0;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:14px}
+.sec-hdr{padding:11px 16px 9px;border-bottom:1px solid #F1F5F9;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.sec-lbl{font-size:9px;font-weight:700;letter-spacing:.12em;color:#94A3B8;text-transform:uppercase}
+.sec-title{font-size:13px;font-weight:600;color:#0F172A}
+
+/* ── Table ──────────────────────────────────────────────────────────────── */
+table{width:100%;border-collapse:collapse}
+thead tr{background:#F8FAFC}
+th{padding:7px 14px;text-align:left;font-size:10px;font-weight:600;color:#64748B;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #E2E8F0}
+td{padding:9px 14px;font-size:12px}
+.td-n{font-weight:500;color:#0F172A}.td-r{color:#94A3B8;font-size:11px}.td-ok{color:#0F172A}
+.td-hi{color:#DC2626;font-weight:700;background:#FEF2F2;padding:2px 5px;border-radius:4px;display:inline-block}
+.td-last{font-weight:700;color:#0F172A}
+tr:not(:last-child) td{border-bottom:1px solid #F1F5F9}
+.col-today{background:#F0FDF4}
+
+/* ── Timeline ───────────────────────────────────────────────────────────── */
+.tl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px;padding:14px}
+.tl-item{border-radius:8px;padding:11px 13px}
+.tl-date{font-size:12px;font-weight:700;margin-bottom:7px}
+.tl-ev{font-size:11px;color:#475569;margin-bottom:4px;padding-left:9px}
+
+/* ── Micro ──────────────────────────────────────────────────────────────── */
+.mc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:10px;padding:12px 14px}
+.mc-item{border-radius:8px;padding:10px 12px}
+.mc-site{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.mc-org{font-size:12px;font-weight:600;color:#0F172A;margin-bottom:4px}
+.mc-s{font-size:10px;color:#166534;margin-bottom:2px}
+.mc-r{font-size:10px;color:#991B1B;margin-bottom:4px}
+.mc-note{font-size:10px;color:#64748B;font-style:italic}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+.footer{padding:14px 24px 0;text-align:center;font-size:10px;color:#94A3B8;line-height:1.7}
+.footer .warn{color:#DC2626;font-weight:600}
+
+/* ── PRINT ──────────────────────────────────────────────────────────────── */
+@media print{
+  @page{size:A4;margin:10mm 12mm}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  body{background:#EEF2F7!important}
+  .ch-card,.sec{break-inside:avoid;page-break-inside:avoid}
+  .ch-grid{grid-template-columns:1fr 1fr}
+  .sm-grid{grid-template-columns:repeat(6,1fr)}
+  .tl-grid{grid-template-columns:repeat(5,1fr)}
+  .mc-grid{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="hdr">
+  <div class="hdr-inner">
+    <div>
+      <div class="hdr-eyebrow">Post-Cardiac Surgery · Clinical Monitoring Report</div>
+      <div class="hdr-name">Mr. Ranjan Shevde</div>
+      <div class="hdr-meta">
+        <span><span class="lbl">Age: </span><strong>78 Yrs</strong></span>
+        <span><span class="lbl">Gender: </span><strong>Male</strong></span>
+        <span><span class="lbl">UHID: </span><strong>IPL2605/69527</strong></span>
+        <span><span class="lbl">Unit: </span><strong>ICON IPD, Dombivli</strong></span>
+      </div>
+    </div>
+    <div class="hdr-right">
+      <div class="hdr-period-lbl">Monitoring Period</div>
+      <div class="hdr-period">3 – 7 June 2026</div>
+      <div class="tags">
+        <span class="tag">Post-CABG Sepsis</span>
+        <span class="tag">VRE UTI</span>
+        <span class="tag">AKI — Recovering</span>
+        <span class="tag">Macrocytic Anaemia</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Good news banner -->
+<div class="good-banner">
+  <span>✅ <strong>7 Jun Update:</strong></span>
+  <span>PCT now NORMAL at 0.22 — sepsis resolving</span><span>·</span>
+  <span>Creatinine improving for 3rd consecutive day (2.40)</span><span>·</span>
+  <span>Haemoglobin 9.0 — transfusion holding</span><span>·</span>
+  <span>Platelets recovering (138)</span><span>·</span>
+  <span style="color:#D97706">⚠ Sodium 146.5 — needs correction</span>
+</div>
+
+<!-- Diagnosis Banner -->
+<div class="banner">
+  <span>⚠️ <strong>Active Diagnoses:</strong></span>
+  <span>Post-CABG Sepsis (Thigh Graft Site)</span><span>·</span>
+  <span>VRE UTI — Enterococcus faecium</span><span>·</span>
+  <span>Acute Kidney Injury (Recovering)</span><span>·</span>
+  <span>Macrocytic Anaemia</span>
+</div>
+
+<div class="content">
+
+  <!-- Summary Cards -->
+  <div class="sm-grid">
+    <div class="sm-card si">
+      <div class="sm-top"><span class="sm-lbl">Creatinine</span><span class="sm-dot"></span></div>
+      <div class="sm-val">2.40</div><div class="sm-unit">mg/dl</div>
+      <div class="sm-chg">↓ 3.14 (peak) · Day 3 ↓</div><div class="sm-ref">Ref: 0.6–1.3</div>
+    </div>
+    <div class="sm-card sw">
+      <div class="sm-top"><span class="sm-lbl">WBC Count</span><span class="sm-dot"></span></div>
+      <div class="sm-val">19,450</div><div class="sm-unit">/cumm</div>
+      <div class="sm-chg">↑ slight bump (post-transfusion)</div><div class="sm-ref">Ref: 4,000–11,000</div>
+    </div>
+    <div class="sm-card sw">
+      <div class="sm-top"><span class="sm-lbl">Haemoglobin</span><span class="sm-dot"></span></div>
+      <div class="sm-val">9.0</div><div class="sm-unit">g/dl</div>
+      <div class="sm-chg">↑ from 7.0 — transfusion held</div><div class="sm-ref">Ref: 13–18</div>
+    </div>
+    <div class="sm-card si">
+      <div class="sm-top"><span class="sm-lbl">Platelets</span><span class="sm-dot"></span></div>
+      <div class="sm-val">138</div><div class="sm-unit">×10³/cumm</div>
+      <div class="sm-chg">↑ from 112 — recovering</div><div class="sm-ref">Ref: 150–450</div>
+    </div>
+    <div class="sm-card sw">
+      <div class="sm-top"><span class="sm-lbl">Sodium</span><span class="sm-dot"></span></div>
+      <div class="sm-val">146.5</div><div class="sm-unit">mmol/l</div>
+      <div class="sm-chg">↑ rising · needs correction</div><div class="sm-ref">Ref: 135–145</div>
+    </div>
+    <div class="sm-card sn">
+      <div class="sm-top"><span class="sm-lbl">Procalcitonin</span><span class="sm-dot"></span></div>
+      <div class="sm-val">0.22</div><div class="sm-unit">ng/ml</div>
+      <div class="sm-chg">↓ from 1.13 ✅ Now normal</div><div class="sm-ref">Ref: 0–0.5</div>
+    </div>
+  </div>
+
+  <!-- Charts Grid -->
+  <div class="ch-grid">
+
+    <div class="ch-card">
+      <div class="ch-hdr"><div><div class="ch-cat">Kidney Function</div><div class="ch-title">Creatinine</div></div><span class="bdg bdg-i">Improving</span></div>
+      <div class="ch-body"><div class="ch-wrap"><canvas id="cCreat"></canvas></div></div>
+      <div class="ch-note">Ref: 0.6–1.3 mg/dl · Peaked 5 Jun at 3.14 · Improving for 3 consecutive days</div>
+    </div>
+
+    <div class="ch-card">
+      <div class="ch-hdr"><div><div class="ch-cat">Infection Markers</div><div class="ch-title">WBC Count</div></div><span class="bdg bdg-w">Watch</span></div>
+      <div class="ch-body"><div class="ch-wrap"><canvas id="cWBC"></canvas></div></div>
+      <div class="ch-note">Shown in thousands/cumm · Ref: 4–11k · 7 Jun bump likely post-transfusion (PCT now normal)</div>
+    </div>
+
+    <div class="ch-card">
+      <div class="ch-hdr"><div><div class="ch-cat">Infection Markers</div><div class="ch-title">Procalcitonin (PCT)</div></div><span class="bdg bdg-n">Normal</span></div>
+      <div class="ch-body"><div class="ch-wrap"><canvas id="cPCT"></canvas></div></div>
+      <div class="ch-note">Ref: 0–0.5 ng/ml · Dropped from 1.13 (3 Jun) to 0.22 (7 Jun) — sepsis resolving</div>
+    </div>
+
+    <div class="ch-card">
+      <div class="ch-hdr"><div><div class="ch-cat">Blood Count</div><div class="ch-title">Haemoglobin</div></div><span class="bdg bdg-w">Improving</span></div>
+      <div class="ch-body"><div class="ch-wrap"><canvas id="cHb"></canvas></div></div>
+      <div class="ch-note">Ref: 13–18 g/dl · Transfusion given 6 Jun — holding at 9.0 on 7 Jun</div>
+    </div>
+
+    <div class="ch-card">
+      <div class="ch-hdr"><div><div class="ch-cat">Blood Count</div><div class="ch-title">Platelet Count</div></div><span class="bdg bdg-i">Recovering</span></div>
+      <div class="ch-body"><div class="ch-wrap"><canvas id="cPlat"></canvas></div></div>
+      <div class="ch-note">Ref: 150–450 ×10³/cumm · Bottomed at 112 (5 Jun) · Now recovering to 138</div>
+    </div>
+
+    <div class="ch-card">
+      <div class="ch-hdr"><div><div class="ch-cat">Infection Markers</div><div class="ch-title">White Cell Differential</div></div><span class="bdg bdg-w">Watch</span></div>
+      <div class="ch-body"><div class="ch-wrap"><canvas id="cDiff"></canvas></div></div>
+      <div class="ch-note">Neutrophils ref: 40–75% (yellow band) · Lymphocytes ref: 20–45%</div>
+    </div>
+
+    <div class="ch-card">
+      <div class="ch-hdr"><div><div class="ch-cat">Electrolytes</div><div class="ch-title">Sodium Trend</div></div><span class="bdg bdg-w">Concern</span></div>
+      <div class="ch-body"><div class="ch-wrap"><canvas id="cNa"></canvas></div></div>
+      <div class="ch-note">Ref: 135–145 mmol/l · Rising 5 consecutive days — post-obstructive diuresis · IV fluid adjustment needed</div>
+    </div>
+
+    <div class="ch-card">
+      <div class="ch-hdr"><div><div class="ch-cat">Kidney Function</div><div class="ch-title">Blood Urea &amp; BUN</div></div><span class="bdg bdg-w">Concern</span></div>
+      <div class="ch-body"><div class="ch-wrap"><canvas id="cUrea"></canvas></div></div>
+      <div class="ch-note">Blood Urea ref: 15–45 mg/dl · BUN ref: 7–21 mg/dl · Data available for 3–4 Jun only</div>
+    </div>
+
+  </div>
+
+  <!-- Electrolytes Table -->
+  <div class="sec">
+    <div class="sec-hdr">
+      <div><div class="sec-lbl">Daily Values · 3–7 Jun</div><div class="sec-title">Electrolytes</div></div>
+      <div style="font-size:10px;color:#D97706;font-weight:600">⚠ Sodium rising for 5 consecutive days — active management needed</div>
+    </div>
+    <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>Electrolyte</th><th>Reference</th>
+            <th>3 Jun</th><th>4 Jun</th><th>5 Jun</th><th>6 Jun</th>
+            <th class="col-today">7 Jun ★</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-n">Sodium (mmol/l)</td><td class="td-r">135–145</td>
+            <td class="td-ok">141.7</td><td class="td-ok">141.0</td><td class="td-ok">142.0</td>
+            <td><span class="td-hi">145.5 ↑</span></td>
+            <td class="col-today"><span class="td-hi">146.5 ↑</span></td>
+          </tr>
+          <tr>
+            <td class="td-n">Potassium (mmol/l)</td><td class="td-r">3.5–5.0</td>
+            <td class="td-ok">4.70</td><td class="td-ok">4.31</td><td class="td-ok">4.00</td>
+            <td class="td-ok">3.87</td>
+            <td class="col-today td-last">3.71</td>
+          </tr>
+          <tr>
+            <td class="td-n">Chloride (mmol/l)</td><td class="td-r">96–108</td>
+            <td class="td-ok">105.1</td><td class="td-ok">105.8</td><td class="td-ok">107.3</td>
+            <td><span class="td-hi">108.1 ↑</span></td>
+            <td class="col-today td-last">106.0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="sec">
+    <div class="sec-hdr"><div><div class="sec-lbl">Timeline · 3–7 Jun</div><div class="sec-title">Key Clinical Events</div></div></div>
+    <div class="tl-grid">
+      <div class="tl-item" style="background:#F5F3FF;border:1px solid #7C3AED22">
+        <div class="tl-date" style="color:#7C3AED">3 Jun</div>
+        <div class="tl-ev" style="border-left:2px solid #7C3AED40">First post-op pathology labs</div>
+        <div class="tl-ev" style="border-left:2px solid #7C3AED40">Creatinine 2.02 — elevated</div>
+        <div class="tl-ev" style="border-left:2px solid #7C3AED40">WBC 23,580 — infection signals</div>
+        <div class="tl-ev" style="border-left:2px solid #7C3AED40">PCT 1.13 — confirms infection</div>
+      </div>
+      <div class="tl-item" style="background:#FEF2F2;border:1px solid #DC262622">
+        <div class="tl-date" style="color:#DC2626">4 Jun</div>
+        <div class="tl-ev" style="border-left:2px solid #DC262640">Creatinine ↑ to 2.71</div>
+        <div class="tl-ev" style="border-left:2px solid #DC262640">WBC peaks at 30,500</div>
+        <div class="tl-ev" style="border-left:2px solid #DC262640">Blood &amp; wound cultures taken</div>
+        <div class="tl-ev" style="border-left:2px solid #DC262640">Chest X-ray — lungs clear ✓</div>
+      </div>
+      <div class="tl-item" style="background:#FEF9C3;border:1px solid #D9770622">
+        <div class="tl-date" style="color:#CA8A04">5 Jun</div>
+        <div class="tl-ev" style="border-left:2px solid #D9770640">Creatinine peaks at 3.14</div>
+        <div class="tl-ev" style="border-left:2px solid #D9770640">Hb drops critically to 7.4</div>
+        <div class="tl-ev" style="border-left:2px solid #D9770640">Drainage tube inserted</div>
+        <div class="tl-ev" style="border-left:2px solid #D9770640">Albumin infusion started</div>
+        <div class="tl-ev" style="border-left:2px solid #D9770640">VRE culture result ⚠</div>
+      </div>
+      <div class="tl-item" style="background:#EFF6FF;border:1px solid #2563EB22">
+        <div class="tl-date" style="color:#2563EB">6 Jun</div>
+        <div class="tl-ev" style="border-left:2px solid #2563EB40">Creatinine reverses: 2.57 ↓</div>
+        <div class="tl-ev" style="border-left:2px solid #2563EB40">WBC falls to 15,480 ↓</div>
+        <div class="tl-ev" style="border-left:2px solid #2563EB40">&gt;1L urine drained ✓</div>
+        <div class="tl-ev" style="border-left:2px solid #2563EB40">Blood transfusion given</div>
+        <div class="tl-ev" style="border-left:2px solid #2563EB40">Piptaz + Tigecycline started</div>
+      </div>
+      <div class="tl-item" style="background:#F0FDF4;border:1px solid #16A34A40">
+        <div class="tl-date" style="color:#16A34A">7 Jun ★</div>
+        <div class="tl-ev" style="border-left:2px solid #16A34A60">PCT 0.22 — within normal ✅</div>
+        <div class="tl-ev" style="border-left:2px solid #16A34A60">Creatinine 2.40 — day 3 ↓ ✅</div>
+        <div class="tl-ev" style="border-left:2px solid #16A34A60">Hb 9.0 — transfusion held ✅</div>
+        <div class="tl-ev" style="border-left:2px solid #16A34A60">Platelets 138 — recovering ✅</div>
+        <div class="tl-ev" style="border-left:2px solid #D9770640;color:#92400E">Sodium 146.5 — watch ⚠</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Microbiology -->
+  <div class="sec">
+    <div class="sec-hdr"><div><div class="sec-lbl">Cultures Collected 4 Jun · Reported 5–6 Jun</div><div class="sec-title">Microbiology Summary</div></div></div>
+    <div class="mc-grid">
+      <div class="mc-item" style="background:#FEF2F2;border:1px solid #FECACA">
+        <div class="mc-site" style="color:#991B1B">Urine</div>
+        <div class="mc-org">Enterococcus faecium (VRE)</div>
+        <div class="mc-s"><strong>Susceptible:</strong> Linezolid · Tigecycline</div>
+        <div class="mc-r"><strong>Resistant:</strong> All others incl. Vancomycin</div>
+        <div class="mc-note">60,000 CFU/ml · Currently on Tigecycline + Piptaz</div>
+      </div>
+      <div class="mc-item" style="background:#FFFBEB;border:1px solid #FDE68A">
+        <div class="mc-site" style="color:#92400E">Left Leg Wound</div>
+        <div class="mc-org">E. coli (ESBL suspected)</div>
+        <div class="mc-s"><strong>Susceptible:</strong> Carbapenems · Amikacin · Piptaz</div>
+        <div class="mc-r"><strong>Resistant:</strong> Most penicillins, cephalosporins</div>
+        <div class="mc-note">Scanty growth from enrichment only</div>
+      </div>
+      <div class="mc-item" style="background:#F0FDF4;border:1px solid #BBF7D0">
+        <div class="mc-site" style="color:#166534">Chest Wound</div>
+        <div class="mc-org">No Growth</div>
+        <div class="mc-s">—</div>
+        <div class="mc-note">Chest wound is clean ✓</div>
+      </div>
+      <div class="mc-item" style="background:#F0FDF4;border:1px solid #BBF7D0">
+        <div class="mc-site" style="color:#166534">Blood Culture</div>
+        <div class="mc-org">No Growth (48h)</div>
+        <div class="mc-s">—</div>
+        <div class="mc-note">No bacteraemia confirmed · Still incubating to 1 week</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>Compiled from Icon Hospital Dept. of Pathology reports · Mahaveernagar Corner, Manpada Road, Dombivli (E) 421 201 · Updated 7 June 2026<br>
+  <span class="warn">⚠ For family reference and communication only. All clinical decisions must be made by qualified medical professionals.</span></p>
+</div>
+
+<script>
+// ── Reference area + line plugin ──────────────────────────────────────────
+const refPlugin = {
+  id: 'ref',
+  beforeDraw(chart) {
+    const cfg = chart.options.plugins?.ref;
+    if (!cfg) return;
+    const { ctx, chartArea: A, scales: { y } } = chart;
+    (cfg.areas || []).forEach(a => {
+      const y1 = Math.min(y.getPixelForValue(a.y1), A.bottom);
+      const y2 = Math.max(y.getPixelForValue(a.y2), A.top);
+      ctx.save(); ctx.fillStyle = a.color;
+      ctx.fillRect(A.left, y2, A.width, y1 - y2);
+      ctx.restore();
+    });
+    (cfg.lines || []).forEach(l => {
+      const py = y.getPixelForValue(l.v);
+      if (py < A.top || py > A.bottom) return;
+      ctx.save();
+      ctx.strokeStyle = l.color; ctx.lineWidth = 1.5;
+      ctx.setLineDash([4, 3]);
+      ctx.beginPath(); ctx.moveTo(A.left, py); ctx.lineTo(A.right, py); ctx.stroke();
+      if (l.lbl) {
+        ctx.fillStyle = l.color; ctx.font = '9px sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText(l.lbl, A.right - 2, py - 3);
+        ctx.textAlign = 'left';
+      }
+      ctx.restore();
+    });
+  }
+};
+Chart.register(refPlugin);
+
+// ── Shared config ─────────────────────────────────────────────────────────
+const DATES  = ['3 Jun','4 Jun','5 Jun','6 Jun','7 Jun'];
+const DATES2 = ['3 Jun','4 Jun'];
+
+const scaleX = { grid:{color:'#F1F5F9'}, ticks:{color:'#94A3B8',font:{size:10}}, border:{display:false} };
+const scaleY = (min,max,fmt) => ({ min, max, grid:{color:'#F1F5F9'}, ticks:{color:'#94A3B8',font:{size:10},callback:fmt||(v=>v)}, border:{display:false} });
+const tip = { backgroundColor:'#0F172A', titleColor:'#94A3B8', bodyColor:'#fff', padding:10, cornerRadius:8 };
+
+function ds(label, data, color, r=5) {
+  return {
+    label, data,
+    borderColor:color, backgroundColor:'transparent', borderWidth:2.5,
+    pointBackgroundColor:color, pointBorderColor:'#fff',
+    pointBorderWidth:2, pointRadius:r, pointHoverRadius:r+2,
+    tension:0.25, spanGaps:false
+  };
+}
+
+// Highlight today's point in gold
+function dsToday(label, data, color, r=5) {
+  const d = ds(label, data, color, r);
+  d.pointBackgroundColor = data.map((_, i) => i === data.length-1 ? '#F59E0B' : color);
+  d.pointRadius = data.map((_, i) => i === data.length-1 ? r+2 : r);
+  d.pointBorderColor = data.map((_, i) => i === data.length-1 ? '#fff' : '#fff');
+  return d;
+}
+
+// ── Chart 1 · Creatinine ─────────────────────────────────────────────────
+new Chart('cCreat', {
+  type:'line',
+  data:{ labels:DATES, datasets:[dsToday('Creatinine (mg/dl)',[2.02,2.71,3.14,2.57,2.40],'#DC2626')] },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{intersect:false,mode:'index'},
+    plugins:{
+      legend:{display:false},
+      tooltip:{...tip, callbacks:{label:c=>` ${c.parsed.y} mg/dl`,afterLabel:()=>' Ref: 0.6–1.3 mg/dl'}},
+      ref:{
+        areas:[{y1:0.6,y2:1.3,color:'rgba(22,163,74,0.15)'}],
+        lines:[{v:1.3,color:'#16A34A',lbl:'Upper Normal (1.3)'}]
+      }
+    },
+    scales:{x:scaleX,y:scaleY(0,4.0)}
+  }
+});
+
+// ── Chart 2 · WBC ────────────────────────────────────────────────────────
+new Chart('cWBC', {
+  type:'line',
+  data:{ labels:DATES, datasets:[dsToday('WBC (×1k/cumm)',[23.58,30.50,21.77,15.48,19.45],'#7C3AED')] },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{intersect:false,mode:'index'},
+    plugins:{
+      legend:{display:false},
+      tooltip:{...tip, callbacks:{
+        label:c=>` ${(c.parsed.y*1000).toLocaleString()} /cumm`,
+        afterLabel:()=>' Ref: 4,000–11,000 /cumm'
+      }},
+      ref:{
+        areas:[{y1:4,y2:11,color:'rgba(22,163,74,0.15)'}],
+        lines:[{v:11,color:'#16A34A',lbl:'Upper Normal (11k)'}]
+      }
+    },
+    scales:{x:scaleX,y:scaleY(0,35,v=>v+'k')}
+  }
+});
+
+// ── Chart 3 · PCT ────────────────────────────────────────────────────────
+new Chart('cPCT', {
+  type:'line',
+  data:{
+    labels:DATES,
+    datasets:[{
+      label:'Procalcitonin (ng/ml)',
+      data:[1.13, null, null, null, 0.22],
+      borderColor:'#0891B2', backgroundColor:'transparent', borderWidth:2.5,
+      pointBackgroundColor:['#DC2626','transparent','transparent','transparent','#16A34A'],
+      pointBorderColor:'#fff', pointBorderWidth:2,
+      pointRadius:[6,0,0,0,6], pointHoverRadius:8,
+      tension:0.25, spanGaps:false
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{intersect:false,mode:'index'},
+    plugins:{
+      legend:{display:false},
+      tooltip:{...tip, callbacks:{
+        label:c=>c.parsed.y!=null?` ${c.parsed.y} ng/ml`:' No data',
+        afterLabel:()=>' Ref: 0–0.5 ng/ml (Normal)'
+      }},
+      ref:{
+        areas:[{y1:0,y2:0.5,color:'rgba(22,163,74,0.18)'}],
+        lines:[{v:0.5,color:'#16A34A',lbl:'Upper Normal (0.5)'}]
+      }
+    },
+    scales:{x:scaleX,y:scaleY(0,1.5)}
+  }
+});
+
+// ── Chart 4 · Haemoglobin ────────────────────────────────────────────────
+new Chart('cHb', {
+  type:'line',
+  data:{ labels:DATES, datasets:[dsToday('Haemoglobin (g/dl)',[9.9,9.1,7.4,7.0,9.0],'#DC2626')] },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{intersect:false,mode:'index'},
+    plugins:{
+      legend:{display:false},
+      tooltip:{...tip, callbacks:{label:c=>` ${c.parsed.y} g/dl`,afterLabel:()=>' Ref: 13–18 g/dl'}},
+      ref:{
+        areas:[{y1:13,y2:18,color:'rgba(22,163,74,0.15)'}],
+        lines:[
+          {v:13,color:'#16A34A',lbl:'Lower Normal (13)'},
+          {v:8,color:'#DC2626',lbl:'Transfusion trigger (8.0)'}
+        ]
+      }
+    },
+    scales:{x:scaleX,y:scaleY(0,20)}
+  }
+});
+
+// ── Chart 5 · Platelets ──────────────────────────────────────────────────
+new Chart('cPlat', {
+  type:'line',
+  data:{ labels:DATES, datasets:[dsToday('Platelets (×10³/cumm)',[209,168,116,112,138],'#D97706')] },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{intersect:false,mode:'index'},
+    plugins:{
+      legend:{display:false},
+      tooltip:{...tip, callbacks:{label:c=>` ${c.parsed.y} ×10³/cumm`,afterLabel:()=>' Ref: 150–450 ×10³/cumm'}},
+      ref:{
+        areas:[{y1:150,y2:280,color:'rgba(22,163,74,0.15)'}],
+        lines:[{v:150,color:'#D97706',lbl:'Lower Normal (150)'}]
+      }
+    },
+    scales:{x:scaleX,y:scaleY(0,280)}
+  }
+});
+
+// ── Chart 6 · White Cell Differential ───────────────────────────────────
+new Chart('cDiff', {
+  type:'line',
+  data:{
+    labels:DATES,
+    datasets:[
+      {label:'Neutrophils %',data:[87,91,89,84,87],borderColor:'#EF4444',backgroundColor:'transparent',borderWidth:2,
+       pointBackgroundColor:[...Array(4).fill('#EF4444'),'#F59E0B'],pointBorderColor:'#fff',pointBorderWidth:2,
+       pointRadius:[4,4,4,4,6],pointHoverRadius:7,tension:0.25},
+      {label:'Lymphocytes %',data:[9,6,8,11,9],borderColor:'#3B82F6',backgroundColor:'transparent',borderWidth:2,
+       pointBackgroundColor:[...Array(4).fill('#3B82F6'),'#F59E0B'],pointBorderColor:'#fff',pointBorderWidth:2,
+       pointRadius:[4,4,4,4,6],pointHoverRadius:7,tension:0.25}
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{intersect:false,mode:'index'},
+    plugins:{
+      legend:{display:true,labels:{usePointStyle:true,pointStyle:'circle',font:{size:10},color:'#64748B',padding:12}},
+      tooltip:{...tip, callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y}%`}},
+      ref:{areas:[{y1:40,y2:75,color:'rgba(250,204,21,0.22)'}]}
+    },
+    scales:{x:scaleX,y:scaleY(0,100,v=>v+'%')}
+  }
+});
+
+// ── Chart 7 · Sodium Trend ───────────────────────────────────────────────
+new Chart('cNa', {
+  type:'line',
+  data:{ labels:DATES, datasets:[dsToday('Sodium (mmol/l)',[141.7,141.0,142.0,145.5,146.5],'#F97316')] },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{intersect:false,mode:'index'},
+    plugins:{
+      legend:{display:false},
+      tooltip:{...tip, callbacks:{label:c=>` ${c.parsed.y} mmol/l`,afterLabel:()=>' Ref: 135–145 mmol/l'}},
+      ref:{
+        areas:[{y1:135,y2:145,color:'rgba(22,163,74,0.15)'}],
+        lines:[{v:145,color:'#D97706',lbl:'Upper Normal (145)'}]
+      }
+    },
+    scales:{x:scaleX,y:scaleY(130,150)}
+  }
+});
+
+// ── Chart 8 · Blood Urea & BUN ───────────────────────────────────────────
+new Chart('cUrea', {
+  type:'line',
+  data:{
+    labels:DATES2,
+    datasets:[
+      {label:'Blood Urea (mg/dl)',data:[61,78],borderColor:'#EA580C',backgroundColor:'transparent',borderWidth:2,
+       pointBackgroundColor:'#EA580C',pointBorderColor:'#fff',pointBorderWidth:2,pointRadius:5,pointHoverRadius:7,tension:0.25},
+      {label:'BUN (mg/dl)',data:[28.49,36.43],borderColor:'#7C3AED',backgroundColor:'transparent',borderWidth:2,
+       pointBackgroundColor:'#7C3AED',pointBorderColor:'#fff',pointBorderWidth:2,pointRadius:5,pointHoverRadius:7,tension:0.25}
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{intersect:false,mode:'index'},
+    plugins:{
+      legend:{display:true,labels:{usePointStyle:true,pointStyle:'circle',font:{size:10},color:'#64748B',padding:12}},
+      tooltip:{...tip, callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y} mg/dl`}},
+      ref:{
+        areas:[
+          {y1:15,y2:45,color:'rgba(22,163,74,0.13)'},
+          {y1:7,y2:21,color:'rgba(59,130,246,0.13)'}
+        ]
+      }
+    },
+    scales:{x:scaleX,y:scaleY(0,100)}
+  }
+});
+</script>
+</body>
+</html>
